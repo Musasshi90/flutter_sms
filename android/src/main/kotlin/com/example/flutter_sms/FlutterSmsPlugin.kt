@@ -96,10 +96,10 @@ class FlutterSmsPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
       return false
     else
       return true
-//    val intent = Intent(Intent.ACTION_SENDTO)
-//    intent.data = Uri.parse("smsto:")
-//    val activityInfo = intent.resolveActivityInfo(activity!!.packageManager, intent.flags.toInt())
-//    return !(activityInfo == null || !activityInfo.exported)
+    val intent = Intent(Intent.ACTION_SENDTO)
+    intent.data = Uri.parse("smsto:")
+    val activityInfo = intent.resolveActivityInfo(activity!!.packageManager, intent.flags.toInt())
+    return !(activityInfo == null || !activityInfo.exported)
   }
 
   private fun sendSMS(result: Result, phones: String, message: String, sendDirect: Boolean) {
