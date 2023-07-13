@@ -94,10 +94,12 @@ class FlutterSmsPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
   private fun canSendSMS(): Boolean {
     if (!activity!!.packageManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY))
       return false
-    val intent = Intent(Intent.ACTION_SENDTO)
-    intent.data = Uri.parse("smsto:")
-    val activityInfo = intent.resolveActivityInfo(activity!!.packageManager, intent.flags.toInt())
-    return !(activityInfo == null || !activityInfo.exported)
+    else
+      return true
+//    val intent = Intent(Intent.ACTION_SENDTO)
+//    intent.data = Uri.parse("smsto:")
+//    val activityInfo = intent.resolveActivityInfo(activity!!.packageManager, intent.flags.toInt())
+//    return !(activityInfo == null || !activityInfo.exported)
   }
 
   private fun sendSMS(result: Result, phones: String, message: String, sendDirect: Boolean) {
